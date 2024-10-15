@@ -1,0 +1,45 @@
+
+
+
+
+import {BrowserRouter,Routes,Route,useNavigate} from 'react-router-dom'
+import './App.css'
+import { Dashboard } from './Component/Dashboard'
+import { LandingPage } from './Component/LandingPage'
+
+function App() {
+
+  return (
+   <div>
+     <div>
+      <BrowserRouter>
+      <Menubar/>
+      <Routes>
+       <Route path="/dashboard" element={<Dashboard/>}/>
+       <Route path="/" element={<LandingPage/>}></Route>
+      </Routes>
+      </BrowserRouter>
+    </div> 
+   </div>
+  )
+}
+ function Menubar(){
+  const navigate=useNavigate();
+  return (
+   <div>
+     <div>
+      <button onClick={()=>{
+        navigate("/");
+      }}>LandingPage</button>
+    </div>
+    
+      <button   onClick={()=>{
+        navigate("/dashboard");
+      }}>Dashboard</button>
+   
+   </div>
+   
+  )
+ }
+
+export default App
