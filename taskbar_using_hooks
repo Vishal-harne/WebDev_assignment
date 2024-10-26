@@ -1,0 +1,22 @@
+import './App.css'
+import {useState} from 'react';
+function App() {
+const [Notifications,setNotifications]=useState(0);
+const [Messages,setMessages]=useState(99);
+const [MyNetwork,setMyNetwork]=useState(12);
+const [Jobs,setJobs]=useState(0);
+  return (
+    <div>
+    <button>Home</button>
+    <button>Notifications{Notifications}</button>
+    <button>Messages{Messages}</button>
+    <button>MyNetwork{MyNetwork}</button>
+    <button>Jobs{Jobs}</button>
+    <button onClick={()=>{
+      setMessages(Messages+1)
+    }}>Me</button>
+    </div>      
+  )
+}
+
+export default App
