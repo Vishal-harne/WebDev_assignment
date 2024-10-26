@@ -1,0 +1,62 @@
+atom.js
+
+import {atom} from "recoil";
+
+export const NotificationAtom=atom({
+    key:"Notificationcount",
+    default:102,
+})
+
+
+export const NetworkAtom=atom({
+    key:"Networkcount",
+    default:102,
+})
+
+export const JobsAtom=atom({
+    key:"Jobscount",
+    default:12,
+})
+
+export const MessagesAtom=atom({
+    key:"Messagescount",
+    default:1,
+})
+
+
+
+App.jsx
+import { RecoilRoot,useRecoilState,useRecoilValue } from 'recoil';
+import {NotificationAtom,NetworkAtom,JobsAtom,MessagesAtom} from './atom'
+import './App.css'
+
+function App() {
+return(
+  <div>
+    <RecoilRoot>
+  <Mainapp/>
+</RecoilRoot>
+  </div>
+)
+}
+
+function Mainapp(){
+  const Notificationcount=useRecoilValue(NotificationAtom);
+  const Networkcount= useRecoilValue(NetworkAtom);
+  const Jobcount =useRecoilValue(JobsAtom);
+  const [Messagescount,setMessagescount]=useRecoilState(MessagesAtom);
+    return (
+      <div>
+      <button>Home</button>
+      <button>Notifications({Notificationcount>=100?"99+":Notificationcount})</button>
+      <button>Messages({Messagescount>=100?"99+":Messagescount})</button>
+      <button>MyNetwork({Networkcount>=100?"99+":Networkcount})</button>
+      <button>Jobs({Jobcount>=100?"99+":Jobcount})</button>
+      <button onClick={()=>{
+        setMessagescount(Messagescount+1);
+      }}>Me</button>
+      </div>      
+    )
+}
+
+export default App
