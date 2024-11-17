@@ -1,0 +1,38 @@
+/*
+first time mount will run
+second time when the dependecy change first unmount will run and then mount will run{for example todos get updated}
+but \when function unmount only unmount function will run 
+this all about the lifecycle events*/
+import React, { useState,useEffect } from 'react'
+import './App.css'
+function App() {
+  const [render,setRender]=useState(true);
+ useEffect(()=>{
+     setInterval(()=>{
+      setRender(r=>!r);
+     },10000)
+ },[])
+  return (
+    <div>
+    {render?<MyComponent/>:<div></div>}
+    </div>
+  )
+}
+
+
+function MyComponent(){
+  useEffect(()=>{
+     console.error("mycomponent is mounted")
+    return()=>{
+    console.log("mycomponent is not mounted")
+    };
+  },[])
+
+  return<div>
+      i am inside
+    </div>
+  
+}
+
+
+export default App
